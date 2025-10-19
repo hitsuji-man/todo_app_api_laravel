@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TodoResource;
 use App\Models\Todo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
@@ -60,17 +61,30 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        dd('store reached');
+
         // バリデーション
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'priority' => 'nullable|integer|min:1|max:3',
-            'due_date' => 'nullable|datetime',
+            'due_date' => 'nullable|date',
             'completed' => 'nullable|boolean',
         ]);
 
+        // due_dateをCarbonに変換（nullチェック付き）
+        if (!empty($validated['due_date'])) {
+            $validated['due_date'] = Carbon::parse($validated['due_date']);
+        }
+
+        // completed デフォルト false
+        if (!isset($validated['completed'])) {
+            $validated['completed'] = false;
+        }
+
         // TODOの作成
-        $todo = TODO::create($validated);
+        $todo = Todo::create($validated);
 
         return new TodoResource($todo);
     }
@@ -97,9 +111,9 @@ class TodoController extends Controller
         // バリデーション
         $validated = $request->validate([
             'title' => 'sometimes|required|string|max:255',
-            'descrioption' => 'nullable|string',
+            'description' => 'nullable|string',
             'priority' => 'sometimes|nullable|integer|min:1|max:3',
-            'due_date' => 'nullable|datetime',
+            'due_date' => 'nullable|date',
             'completed' => 'sometimes|boolean',
         ]);
 
