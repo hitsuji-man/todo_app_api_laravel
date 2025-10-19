@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Todo APIコントローラー
@@ -62,6 +63,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         // dd('store reached');
+        // Log::info('リクエストデータ:', $request->all());
 
         // バリデーション
         $validated = $request->validate([
