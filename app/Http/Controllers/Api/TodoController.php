@@ -61,8 +61,7 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        dd('store reached');
+        // dd('store reached');
 
         // バリデーション
         $validated = $request->validate([

@@ -30,7 +30,7 @@ class Todo extends Model
      */
     protected $casts = [
         'completed' => 'boolean',
-        'due_date' => 'datetime',
+        'due_date' => 'date',
         'priority' => 'integer',
     ];
 
@@ -53,6 +53,6 @@ class Todo extends Model
         if (!$this->due_date || $this->completed) {
             return false;
         }
-        return $this->due_date->isPast();
+        return Carbon::parse($this->due_date)->isPast();
     }
 }
