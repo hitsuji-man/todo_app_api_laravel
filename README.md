@@ -63,11 +63,11 @@ APP_DEBUG=true
 APP_URL=http://localhost
 
 DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=todo_app
-DB_USERNAME=todo_user
-DB_PASSWORD=your_password
+# DB_HOST=127.0.0.1
+# DB_PORT=5432
+# DB_DATABASE=todo_app
+# DB_USERNAME=todo_user
+# DB_PASSWORD=
 ```
 
 ### データベースの設定の確認
