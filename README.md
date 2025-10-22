@@ -52,8 +52,8 @@ git clone https://github.com/hitsuji-man/todo_app_api_laravel.git
 cd todo_app_api_laravel
 ```
 
-.env ファイル
-(通常は.env ファイルには機密事項が含まれるため、README には記載しないほうがいい。事実.gitignore に含めている。)
+.env.example ファイル
+(通常は.env ファイルには機密事項が含まれるため、README には記載しないほうがいい。事実.gitignore に含めて Github に push しないようにしている。これは記入例 example ファイル)
 
 ```bash
 APP_NAME=TodoApp
