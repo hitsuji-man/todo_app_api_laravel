@@ -23,7 +23,22 @@ Laravel API を用いて作成した Todo アプリ
 ## 開発環境実行
 
 ```bash
+brew services start postgresql
+```
+
+(PostgreSQL で Database とテーブルを作成)
+
+```bash
+psql postgres
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=#
+```
+
+```bash
 git clone https://github.com/hitsuji-man/todo_app_api_laravel.git
 cd todo_app_api_laravel
+php artisan migrate
 php artisan serve
 ```
